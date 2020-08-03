@@ -76,8 +76,12 @@ public class DroneDeliveryServiceImpl implements IDroneDeliveryService {
   @Override
   public void processDeliveries(List<Itinerary> itineraries) {
     for (Itinerary itinerary : itineraries) {
-      for (Route route : itinerary.getRoutes()) {
-        itinerary.addDelivery(moveDrone(itinerary.getDrone(), route));
+      try {
+        for (Route route : itinerary.getRoutes()) {
+          itinerary.addDelivery(moveDrone(itinerary.getDrone(), route));
+        }
+      } catch (DroneApplicationException e) {
+        continue;
       }
     }
   }
@@ -93,13 +97,15 @@ public class DroneDeliveryServiceImpl implements IDroneDeliveryService {
     return drone;
   }
 
-  private Delivery moveDrone(Drone drone, Route route) {
+  private Delivery moveDrone(Drone drone, Route route) throws DroneApplicationException {
     for (char command : route.getSteps().toCharArray()) {
       switch (command) {
         case 'A':
           if (drone.simulateMoveForward(
               Integer.parseInt(DroneApplicationConfig.getProperty(MAP_DIMENSION)))) {
             drone.moveForward();
+          } else {
+            throw new DroneApplicationException("El dron no puede salir del rango del mapa configurado");
           }
           break;
         case 'I':
