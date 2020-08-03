@@ -48,9 +48,8 @@ public class Drone {
         return (this.getPosition().getPosY() - 1 >= -mapDimension);
       case WEST:
         return (this.getPosition().getPosX() - 1 >= -mapDimension);
-      default:
-        return false;
     }
+    return false;
   }
 
 }
