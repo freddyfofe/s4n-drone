@@ -30,7 +30,9 @@ public class FilePrinterServiceImpl implements IFilePrinterService {
   public void printResults(List<Itinerary> itineraries, File directory)
       throws DroneApplicationException {
     for (Itinerary itinerary : itineraries) {
-      printItinerary(itinerary, directory);
+      if(itinerary.isSuccessfull()) {
+        printItinerary(itinerary, directory);
+      }
     }
   }
 
