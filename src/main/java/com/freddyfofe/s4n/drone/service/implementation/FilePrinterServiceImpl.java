@@ -37,7 +37,6 @@ public class FilePrinterServiceImpl implements IFilePrinterService {
   private void printItinerary(Itinerary itinerary, File directory)
       throws DroneApplicationException {
 
-
     File outFile = new File(
         directory.getAbsolutePath() + "/out" + String.format("%02d", itinerary.getDrone().getId()) +
             ".txt");
