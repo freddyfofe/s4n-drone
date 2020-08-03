@@ -7,9 +7,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Position {
+public class Route {
 
-  private int posX;
-  private int posY;
+  private String steps;
 
 }

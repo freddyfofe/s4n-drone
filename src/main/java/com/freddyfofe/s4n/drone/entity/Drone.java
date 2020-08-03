@@ -1,8 +1,14 @@
 package com.freddyfofe.s4n.drone.entity;
 
 import com.freddyfofe.s4n.drone.utility.Direction;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Drone {
+
+  private int id;
   private Position position;
   private int lunchCapacity;
   private Direction direction;
@@ -30,22 +36,6 @@ public class Drone {
         this.position.setPosX(this.position.getPosX() - 1);
         break;
     }
-  }
-
-  public Position getPosition() {
-    return position;
-  }
-
-  public void setPosition(Position position) {
-    this.position = position;
-  }
-
-  public int getLunchCapacity() {
-    return lunchCapacity;
-  }
-
-  public void setLunchCapacity(int lunchCapacity) {
-    this.lunchCapacity = lunchCapacity;
   }
 
 }
