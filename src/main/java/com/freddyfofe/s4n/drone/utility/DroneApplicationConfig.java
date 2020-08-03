@@ -13,7 +13,6 @@ public class DroneApplicationConfig {
   private static Properties applicationProperties = new Properties();
 
   static {
-    System.out.println("LLAMAAAADOOO");
     try {
       URL fileInputUrl =
           DroneApplication.class.getClassLoader().getResource("droneApplication.properties");

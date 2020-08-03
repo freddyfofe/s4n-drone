@@ -14,11 +14,11 @@ public class Drone {
   private Direction direction;
 
   public void turnLeft() {
-    this.direction.turnLeft();
+    this.direction = this.direction.turnLeft();
   }
 
   public void turnRight() {
-    this.direction.turnRight();
+    this.direction = this.direction.turnRight();
   }
 
   public void moveForward() {
@@ -35,6 +35,21 @@ public class Drone {
       case WEST:
         this.position.setPosX(this.position.getPosX() - 1);
         break;
+    }
+  }
+
+  public boolean simulateMoveForward(int mapDimension) {
+    switch (this.getDirection()) {
+      case NORTH:
+        return (this.getPosition().getPosY() + 1 <= mapDimension);
+      case EAST:
+        return (this.getPosition().getPosX() + 1 <= mapDimension);
+      case SOUTH:
+        return (this.getPosition().getPosY() - 1 >= -mapDimension);
+      case WEST:
+        return (this.getPosition().getPosX() - 1 >= -mapDimension);
+      default:
+        return false;
     }
   }
 

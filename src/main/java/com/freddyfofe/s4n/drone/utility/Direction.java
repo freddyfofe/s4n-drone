@@ -10,8 +10,12 @@ public enum Direction {
 
   private String directionDisplay;
 
-  private Direction(final String directionDisplay) {
+  Direction(final String directionDisplay) {
     this.directionDisplay = directionDisplay;
+  }
+
+  public String getDirectionDisplay() {
+    return this.directionDisplay;
   }
 
   public Direction turnRight() {

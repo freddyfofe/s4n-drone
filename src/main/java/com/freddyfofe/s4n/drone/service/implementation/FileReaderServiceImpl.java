@@ -20,6 +20,21 @@ public class FileReaderServiceImpl implements IFileReaderService {
 
   private static Logger LOGGER = LoggerFactory.getLogger(FileReaderServiceImpl.class);
 
+  private volatile static FileReaderServiceImpl instance;
+
+  private FileReaderServiceImpl(){}
+
+  public static FileReaderServiceImpl getInstance() {
+    if (instance == null) {
+      synchronized (FileReaderServiceImpl.class) {
+        if (instance == null) {
+          instance = new FileReaderServiceImpl();
+        }
+      }
+    }
+    return instance;
+  }
+
   /**
    * Reads the files and validate its lines and names
    *
