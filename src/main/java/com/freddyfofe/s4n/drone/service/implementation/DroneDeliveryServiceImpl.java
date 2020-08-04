@@ -80,7 +80,9 @@ public class DroneDeliveryServiceImpl implements IDroneDeliveryService {
         for (Route route : itinerary.getRoutes()) {
           itinerary.addDelivery(moveDrone(itinerary.getDrone(), route));
         }
+        itinerary.setSuccessful(true);
       } catch (DroneApplicationException e) {
+        itinerary.setSuccessful(false);
         continue;
       }
     }

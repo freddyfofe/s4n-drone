@@ -14,7 +14,7 @@ public class Itinerary {
   List<Delivery> deliveries;
   Drone drone;
   List<Route> routes;
-  boolean successfull;
+  boolean successful;
 
   public void addDelivery(Delivery delivery) {
     if (null == deliveries) {
